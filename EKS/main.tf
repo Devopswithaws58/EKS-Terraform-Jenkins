@@ -60,6 +60,7 @@ module "eks" {
       desired_size = 2
 
       instance_type = ["t2.small"]
+      capacity_type  = "SPOT"
     }
   }
 
