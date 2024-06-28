@@ -3,7 +3,7 @@
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
 
-  name = "jenkins-vpc"
+  name = "EKS-VPC"
   cidr = var.vpc_cidr
 
   azs                     = data.aws_availability_zones.available.names
@@ -28,7 +28,7 @@ module "vpc" {
 
   tags = {
     "kubernetes.io/cluster/my-eks-cluster" = "shared"
-    Name                                   = "Jenkins-VPC"
+    Name                                   = "my-eks-cluster-VPC"
     Terraform                              = "true"
     Environment                            = "dev"
   }
