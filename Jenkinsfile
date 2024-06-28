@@ -66,8 +66,9 @@ pipeline{
                     dir('EKS/ConfigFiles') {
                         sh 'aws eks update-kubeconfig --name my-eks-cluster'
                         sh 'kubectl delete all --all'
-                        sh 'kubectl apply -f deploy.yml'
-                        sh 'kubectl apply -f service.yml'
+                        sh 'kubectl create namespace eks-nginx-app'
+                        sh 'kubectl apply -f deployment.yaml'
+                        sh 'kubectl apply -f service.yaml'
                     }
                 }
             }
