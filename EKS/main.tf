@@ -2,6 +2,7 @@
 
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
+  version = "5.8.1"
 
   name = "EKS-VPC"
   cidr = var.vpc_cidr
@@ -40,6 +41,7 @@ module "vpc" {
 
 module "eks" {
   source = "terraform-aws-modules/eks/aws"
+  version = "20.15.0"
 
   cluster_name    = "my-eks-cluster"
   cluster_version = "1.29"

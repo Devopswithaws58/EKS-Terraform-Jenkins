@@ -1,6 +1,7 @@
 ########################  VPC Creation ############################ 
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
+  version = "5.8.1"
 
   name = "jenkins-vpc"
   cidr = var.vpc_cidr
@@ -48,6 +49,7 @@ module "vpc" {
 
 module "sg" {
   source = "terraform-aws-modules/security-group/aws"
+  version = "5.1.2"
 
   name        = "Jenkins-SG"
   description = "Security group for Jenkins-Server with custom ports open within VPC"
@@ -89,6 +91,7 @@ module "sg" {
 
 module "ec2_instance" {
   source = "terraform-aws-modules/ec2-instance/aws"
+  version = "5.6.1"
 
   name = "jenkins-server"
 
