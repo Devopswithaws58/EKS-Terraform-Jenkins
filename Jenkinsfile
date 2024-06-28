@@ -65,8 +65,9 @@ pipeline{
                 script{
                     dir('EKS/ConfigFiles') {
                         sh 'aws eks update-kubeconfig --name my-eks-cluster'
+                        sh 'kubectl delete all --all'
                         sh 'kubectl apply -f deploy.yml'
-                        sh 'kubectl apply -f service.yaml'
+                        sh 'kubectl apply -f service.yml'
                     }
                 }
             }
