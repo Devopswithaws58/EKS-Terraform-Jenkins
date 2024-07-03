@@ -15,8 +15,8 @@ spec:
       name: reactapppod
     spec:
       containers:
-      - image: reactappcontainer
-        name: devopswthaws58/react-app
+      - image: devopswthaws58/react-app
+        name: reactappcontainer
         ports:
         - containerPort: 3000
 ---
