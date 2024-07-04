@@ -17,14 +17,14 @@ module "vpc" {
   enable_dns_support      = true
 
   public_subnet_tags = {
-    "Name"                                 = "jenkins-public-subnet"
+    "Name"                                 = "eks-jenkins-public-subnet"
     "kubernetes.io/cluster/my-eks-cluster" = "shared"
-    "kubernetes.io/role/elb"               = "1"
+    "kubernetes.io/role/elb"               = 1
   }
   private_subnet_tags = {
-    "Name"                                 = "jenkins-private-subnet"
+    "Name"                                 = "eks-jenkins-private-subnet"
     "kubernetes.io/cluster/my-eks-cluster" = "shared"
-    "kubernetes.io/role/internal-elb"      = "1"
+    "kubernetes.io/role/internal-elb"      = 1
   }
 
   tags = {
@@ -51,15 +51,13 @@ module "eks" {
   vpc_id     = module.vpc.vpc_id
   subnet_ids = module.vpc.private_subnets
 
-  enable_irsa = true
-
   eks_managed_node_groups = {
-    nodes = {
+    dev = {
       min_size     = 1
       max_size     = 3
       desired_size = 2
 
-      instance_type = ["t2.small"]
+      instance_types = ["t2.small"]
       capacity_type  = "SPOT"
     }
   }
